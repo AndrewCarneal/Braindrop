@@ -1,0 +1,27 @@
+{
+  "name": "talkie",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "exports": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "internal-ip": "^6.2.0",
+    "lowdb": "^2.1.0",
+    "nodemon": "^2.0.12",
+    "open": "^8.2.1",
+    "web-push": "^3.4.5"
+  }
+}
