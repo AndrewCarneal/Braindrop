@@ -8,7 +8,7 @@ Download here: https://nodejs.org/en/
 With Node installed, simply double-click on ```Run Braindrop.bat```
 
 ## Access on other devices
-1. Run Braindrop on a computer
+1. Run the Braindrop server on a computer by double-clickin ```Run Braindrop.bat```
 2. Ensure the device you want to use is conneced to the same network that Braindrop is running on
 3. Braindrop will show an address in the console after it runs
 4. Enter that address into any device's web browser.
