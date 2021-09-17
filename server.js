@@ -1,7 +1,7 @@
 import { JSONFileSync, Low } from 'lowdb';
-import { dirname, join } from 'path';
 
 import cors from 'cors';
+import { dirname } from 'path';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import internalIp from 'internal-ip';
@@ -10,7 +10,6 @@ import open from 'open';
 const app = express();
 const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
 const adapter = new JSONFileSync('db.json');
 const db = new Low(adapter);
 
@@ -31,31 +30,32 @@ app.get('/connect', (req, res) => {
 	res.sendFile(__dirname + '/public/connect.html');
 });
 
-app.get('/droplets', async (req, res, next) => {
+app.get('/droplets', async (req, res) => {
 	res.send(db.data);
 });
 
-app.post('/submit', async (req, res, next) => {
-	console.log('submitted');
+app.post('/submit', async (req, res) => {
 	const post = posts.push(req.body.content);
 	await db.write();
 	res.send('' + post);
-	console.log('' + req.body.content);
+	console.log('Submitted Droplet: ' + req.body.content);
 });
 
-app.post('/delete/:id', async (req, res, next) => {
+app.post('/delete/:id', async (req, res) => {
 	var id = req.params.id;
-	console.log(id);
+	console.log('Removing Droplet with the ID of: ' + id);
 	posts.splice(id, 1);
 	await db.write();
-	res.send(200);
+	res.sendStatus(200);
 });
 
-app.post('/deleteall', async (req, res, next) => {
-	console.log('deleting all');
+app.post('/deleteall', async (req, res) => {
+	console.log('Deleting all Droplets');
+
 	while (posts.length) {
 		posts.pop();
 	}
+
 	await db.write();
 	res.sendStatus(200);
 });
