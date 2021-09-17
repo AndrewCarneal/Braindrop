@@ -1,7 +1,7 @@
 # Braindrop
 
 ## Requirements:
-Node v16.0.0 and above
+Node v16.0.0 and above  
 Download here: https://nodejs.org/en/
 
 ## How to use:
