@@ -29,9 +29,18 @@ function fetchDroplets() {
 			);
 		}
 		for (var i = 0; i < droplets.length; i++) {
-			$('#dropletList').append(
-				`<li class="border-bottom my-2 pb-2 d-flex justify-content-between align-items-center">${droplets[i]}<button class="btn btn-outline-danger" data-id="${i}" onclick="deleteDroplet(this)">Delete</button></li>`
-			);
+			if (
+				droplets[i].startsWith('http://') ||
+				droplets[i].startsWith('https://')
+			) {
+				$('#dropletList').append(
+					`<li class="border-bottom my-2 pb-2 d-flex justify-content-between align-items-center"><a href="${droplets[i]}">${droplets[i]}</a><button class="btn btn-outline-danger" data-id="${i}" onclick="deleteDroplet(this)">Delete</button></li>`
+				);
+			} else {
+				$('#dropletList').append(
+					`<li class="border-bottom my-2 pb-2 d-flex justify-content-between align-items-center">${droplets[i]}<button class="btn btn-outline-danger" data-id="${i}" onclick="deleteDroplet(this)">Delete</button></li>`
+				);
+			}
 		}
 		$('#dropletSpinner').hide();
 	};
